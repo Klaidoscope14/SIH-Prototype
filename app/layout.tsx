@@ -15,9 +15,9 @@ const v0FontIbmPlexSerif = V0_Font_IBM_Plex_Serif({
 })
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
-  generator: "v0.app",
+  title: "CLA",
+  description: "SIH Prototype",
+  generator: "x",
 }
 
 export default function RootLayout({
