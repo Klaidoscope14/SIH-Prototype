@@ -12,7 +12,7 @@ export type Props = {
 const clamp = (n: number, a: number, b: number) => Math.max(a, Math.min(b, n))
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t
 
-export default function SankeyLite({ inputs, processes, outputs, loopPercent, landfillPercent }: Props) {
+export default function SankeyLite({ inputs, processes, outputs, landfillPercent }: Props) {
   // Canvas & layout
   const width = 1000
   const height = 340
