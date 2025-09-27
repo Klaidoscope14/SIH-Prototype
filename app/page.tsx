@@ -320,8 +320,10 @@ export default function Page() {
                       <YAxis tick={{ fill: "var(--muted-foreground)" }} />
                       <Legend />
                       <ChartTooltip content={<ChartTooltipContent />} />
-                      <Bar dataKey="Linear" fill="oklch(0.6 0 0)" radius={[4, 4, 0, 0]} />
-                      <Bar dataKey="Circular" fill="var(--brand)" radius={[4, 4, 0, 0]} />
+                      {/* Grey for Linear */}
+                      <Bar dataKey="Linear" fill="hsl(0 0% 60%)" radius={[4, 4, 0, 0]} />
+                      {/* Red for Circular */}
+                      <Bar dataKey="Circular" fill="hsl(0 65% 100%)" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </ChartContainer>
