@@ -13,8 +13,8 @@ import SankeyLite from "@/components/sankey-lite"
 type MineralKey = "aluminum" | "copper" | "lithium"
 
 type KPI = {
-  mci: number // 0..1
-  gwpCircular: number // kg CO2-eq
+  mci: number 
+  gwpCircular: number 
   energySavingsPct: number
   optimalRecycledPct: number
 }
@@ -205,11 +205,9 @@ export default function Page() {
           </p>
         </section>
 
-        {/* Core Interactive Demo */}
         <section className="space-y-6">
           <h2 className="text-pretty text-2xl font-semibold">Analyze a Mineral&apos;s Life Cycle</h2>
 
-          {/* Mineral Selection */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {(["aluminum", "copper", "lithium"] as MineralKey[]).map((key) => {
               const active = selected === key
@@ -243,9 +241,7 @@ export default function Page() {
             })}
           </div>
 
-          {/* Dashboard */}
           <div className="grid grid-cols-1 gap-6">
-            {/* KPIs */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <Card>
                 <CardHeader>
@@ -284,7 +280,6 @@ export default function Page() {
               </Card>
             </div>
 
-            {/* Sankey Visualization */}
             <Card>
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">{data.sankey.title}</CardTitle>
@@ -300,7 +295,6 @@ export default function Page() {
               </CardContent>
             </Card>
 
-            {/* Impact Comparison */}
             <Card>
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">{data.comparison.title}</CardTitle>
@@ -320,9 +314,7 @@ export default function Page() {
                       <YAxis tick={{ fill: "var(--muted-foreground)" }} />
                       <Legend />
                       <ChartTooltip content={<ChartTooltipContent />} />
-                      {/* Grey for Linear */}
                       <Bar dataKey="Linear" fill="hsl(0 0% 60%)" radius={[4, 4, 0, 0]} />
-                      {/* Red for Circular */}
                       <Bar dataKey="Circular" fill="hsl(0 65% 100%)" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
@@ -337,7 +329,6 @@ export default function Page() {
 
         <Separator />
 
-        {/* AI Recommendations */}
         <section className="space-y-4">
           <h2 className="text-pretty text-2xl font-semibold">AI-Generated Insights</h2>
           <Card>

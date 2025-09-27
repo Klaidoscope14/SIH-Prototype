@@ -4,7 +4,7 @@ export default function CircularProgress({
   strokeWidth = 10,
   className = "",
 }: {
-  value: number // 0..1
+  value: number 
   size?: number
   strokeWidth?: number
   className?: string
@@ -22,7 +22,6 @@ export default function CircularProgress({
       aria-label={`Progress ${(v * 100).toFixed(0)}%`}
     >
       <svg width={size} height={size} className="-rotate-90">
-        {/* track */}
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -31,7 +30,6 @@ export default function CircularProgress({
           strokeWidth={strokeWidth}
           fill="none"
         />
-        {/* progress (inherits from .text-brand) */}
         <circle
           cx={size / 2}
           cy={size / 2}
