@@ -5,10 +5,14 @@ import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
-import { IBM_Plex_Serif as V0_Font_IBM_Plex_Serif } from 'next/font/google'
+import { IBM_Plex_Serif as V0_Font_IBM_Plex_Serif } from "next/font/google"
 
-// Initialize fonts
-V0_Font_IBM_Plex_Serif({ weight: ["100","200","300","400","500","600","700"] })
+const v0FontIbmPlexSerif = V0_Font_IBM_Plex_Serif({
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-ibm-plex-serif",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "v0 App",
@@ -18,11 +22,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className={`dark ${v0FontIbmPlexSerif.variable}`}>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />

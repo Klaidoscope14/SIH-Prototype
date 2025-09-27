@@ -71,7 +71,6 @@ const MINERALS: Record<MineralKey, MineralData> = {
       metrics: [
         { key: "Global Warming Potential (kg CO₂-eq)", linear: 16.5, circular: 0.8, unit: "kg CO₂-eq" },
         { key: "Water Scarcity (m³)", linear: 12.1, circular: 1.5, unit: "m³" },
-        // Map qualitative to numeric for visualization
         { key: "Resource Depletion (relative)", linear: 100, circular: 20 },
       ],
     },
@@ -111,7 +110,6 @@ const MINERALS: Record<MineralKey, MineralData> = {
   lithium: {
     name: "Lithium",
     tag: "Critical Mineral",
-    // Keep placeholders to illustrate selection state without full data
     kpi: {
       mci: 0.4,
       gwpCircular: 3.5,
@@ -144,10 +142,8 @@ const MINERALS: Record<MineralKey, MineralData> = {
 }
 
 function MineralIcon({ type }: { type: MineralKey }) {
-  // Simple inline SVG icons to avoid extra deps
   const common = { width: 24, height: 24, fill: "none", stroke: "currentColor", strokeWidth: 2 }
   if (type === "aluminum") {
-    // can/ingot
     return (
       <svg {...common} viewBox="0 0 24 24" aria-hidden="true">
         <rect x="6" y="3" width="12" height="18" rx="2" />
@@ -156,7 +152,6 @@ function MineralIcon({ type }: { type: MineralKey }) {
     )
   }
   if (type === "copper") {
-    // coil
     return (
       <svg {...common} viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="12" cy="12" r="7" />
@@ -164,7 +159,6 @@ function MineralIcon({ type }: { type: MineralKey }) {
       </svg>
     )
   }
-  // lithium battery
   return (
     <svg {...common} viewBox="0 0 24 24" aria-hidden="true">
       <rect x="4" y="7" width="14" height="10" rx="2" />
@@ -178,11 +172,6 @@ export default function Page() {
   const [selected, setSelected] = useState<MineralKey>("aluminum")
   const data = MINERALS[selected]
 
-  const chartConfig = {
-    Linear: { label: "Linear Pathway", color: "oklch(0.6 0 0)" }, // gray
-    Circular: { label: "Circular Pathway", color: "var(--brand)" }, // green
-  }
-
   const barData = data.comparison.metrics.map((m) => ({
     name: m.key,
     Linear: m.linear,
@@ -190,17 +179,16 @@ export default function Page() {
   }))
 
   return (
-    <div className="min-h-screen bg-(--charcoal) text-foreground">
+    <div className="min-h-screen bg-charcoal text-foreground">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 border-b border-[color:var(--color-border)]/40 bg-(--charcoal)/80 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-color-border/40 bg-charcoal/80 backdrop-blur">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-6 w-6 rounded-sm bg-(--brand)" aria-hidden />
+            <div className="h-6 w-6 rounded-sm bg-brand" aria-hidden />
             <span className="text-pretty font-semibold tracking-tight">Circularity Intelligence</span>
-            <Badge className="bg-(--accent-blue) text-[oklch(0.98 0 0)]">Hackathon Prototype</Badge>
           </div>
-          <Button asChild className="bg-(--brand) text-[oklch(0.1 0 0)] hover:opacity-90 font-mono">
-            <a href="#" target="_blank" rel="noreferrer">
+          <Button asChild className="bg-brand text-[oklch(0.1_0_0)] hover:opacity-90 font-mono">
+            <a href="https://github.com/Klaidoscope14/SIH-Prototype" target="_blank" rel="noreferrer">
               View on GitHub
             </a>
           </Button>
@@ -231,13 +219,15 @@ export default function Page() {
                   key={key}
                   onClick={() => setSelected(key)}
                   className={`text-left rounded-lg border transition-colors p-4 bg-card hover:bg-accent/10
-                    ${active ? "border-(--brand)" : "border-[color:var(--color-border)]/40"}`}
+                    ${active ? "border-brand" : "border-color-border/40"}`}
                   aria-pressed={active}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div
-                        className={`h-10 w-10 grid place-items-center rounded-md ${active ? "bg-(--brand) text-[oklch(0.1_0_0)]" : "bg-secondary text-foreground"}`}
+                        className={`h-10 w-10 grid place-items-center rounded-md ${
+                          active ? "bg-brand text-[oklch(0.1_0_0)]" : "bg-secondary text-foreground"
+                        }`}
                       >
                         <MineralIcon type={key} />
                       </div>
@@ -246,7 +236,7 @@ export default function Page() {
                         <div className="text-xs text-muted-foreground">{m.tag}</div>
                       </div>
                     </div>
-                    {active && <Badge className="bg-(--brand) text-[oklch(0.1_0_0)]">Selected</Badge>}
+                    {active && <Badge className="bg-brand text-[oklch(0.1_0_0)]">Selected</Badge>}
                   </div>
                 </button>
               )
@@ -281,7 +271,7 @@ export default function Page() {
                   <CardTitle className="text-sm text-muted-foreground">Energy Savings (vs. Primary)</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold text-(--brand)">{data.kpi.energySavingsPct}%</div>
+                  <div className="text-3xl font-bold text-brand">{data.kpi.energySavingsPct}%</div>
                 </CardContent>
               </Card>
               <Card>
@@ -321,7 +311,7 @@ export default function Page() {
                     Linear: { label: "Linear Pathway", color: "oklch(0.6 0 0)" },
                     Circular: { label: "Circular Pathway", color: "var(--brand)" },
                   }}
-                  className="aspect-[16/7] rounded-md border border-[color:var(--color-border)]/40"
+                  className="aspect-[16/7] rounded-md border border-color-border/40"
                 >
                   <ResponsiveContainer>
                     <BarChart data={barData}>
@@ -351,10 +341,9 @@ export default function Page() {
           <Card>
             <CardContent className="flex items-start gap-4 p-6">
               <div
-                className="h-10 w-10 grid place-items-center rounded-md bg-(--accent-blue) text-[oklch(0.98_0_0)]"
+                className="h-10 w-10 grid place-items-center rounded-md bg-accent-blue text-[oklch(0.98_0_0)]"
                 aria-hidden
               >
-                {/* simple lightbulb */}
                 <svg
                   width="20"
                   height="20"
@@ -379,7 +368,6 @@ export default function Page() {
           </Card>
         </section>
 
-        {/* How It Works / Tech Stack */}
         <section className="space-y-4">
           <h2 className="text-pretty text-2xl font-semibold">Technology Behind the Prototype</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
