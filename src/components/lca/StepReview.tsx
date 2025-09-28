@@ -16,8 +16,11 @@ interface StepReviewProps {
 
 const metalData: Record<Metal, { name: string; icon: string }> = {
   aluminium: { name: "Aluminium", icon: "Al" },
+  aluminum: { name: "Aluminum", icon: "Al" }, // US spelling
   copper: { name: "Copper", icon: "Cu" },
-  steel: { name: "Steel", icon: "Fe" }
+  steel: { name: "Steel", icon: "Fe" },
+  calcium: { name: "Calcium", icon: "Ca" },
+  lithium: { name: "Lithium", icon: "Li" }
 }
 
 const gridRegionLabels: Record<string, string> = {
