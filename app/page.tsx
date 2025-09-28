@@ -205,8 +205,9 @@ export default function Page() {
 
         <section className="space-y-6">
           <h2 className="text-pretty text-2xl font-semibold">Analyze a Mineral&apos;s Life Cycle</h2>
-
-          <h2 className="text-pretty text-2xl font-semibold">Select a mineral from the below.</h2>
+          <p className="text-muted-foreground leading-relaxed max-w-3xl">
+            Select a mineral from the below.
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {(["aluminum", "copper", "lithium"] as MineralKey[]).map((key) => {
