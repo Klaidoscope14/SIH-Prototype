@@ -196,7 +196,6 @@ export default function Page() {
       </header>
 
       <main className="mx-auto max-w-6xl px-4 py-10 space-y-12">
-        {/* Hero */}
         <section className="space-y-3">
           <h1 className="text-pretty text-3xl md:text-4xl font-bold">Visualizing a Circular Future for Metals</h1>
           <p className="text-muted-foreground leading-relaxed max-w-3xl">
