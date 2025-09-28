@@ -18,8 +18,11 @@ interface StepProductCompositionProps {
 
 const metalData: Record<Metal, { name: string; icon: string }> = {
   aluminium: { name: "Aluminium", icon: "Al" },
+  aluminum: { name: "Aluminum", icon: "Al" },
   copper: { name: "Copper", icon: "Cu" },
-  steel: { name: "Steel", icon: "Fe" }
+  steel: { name: "Steel", icon: "Fe" },
+  calcium: { name: "Calcium", icon: "Ca" },
+  lithium: { name: "Lithium", icon: "Li" }
 }
 
 export default function StepProductComposition({ inputs, onUpdate, metal }: StepProductCompositionProps) {
