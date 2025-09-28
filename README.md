@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+**Circularity Intelligence Platform: Overview & Workflow** ⚙️
 
-## Getting Started
+**Purpose:**
+An AI-powered tool that transforms Life Cycle Assessment (LCA) from a slow, static process into a dynamic, predictive, and optimisation-driven engine for guiding the metals sector toward a circular economy.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### **User Workflow**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Scenario Modelling**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   * Define production pathways.
+   * Inputs: raw material mix (virgin vs. recycled), energy sources, transport logistics, end-of-life recycling rates.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **AI-Powered Analysis**
 
-## Learn More
+   * Supervised ML models (deep learning, gradient boosting) trained on LCI databases + industry data.
+   * Estimates missing data with uncertainty.
+   * Predicts environmental & circularity outcomes in real-time.
 
-To learn more about Next.js, take a look at the following resources:
+3. **Visualisation & Comparison**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   * Interactive dashboard.
+   * **Sankey diagrams** for full material flow (inputs → products → waste → circular loops).
+   * Side-by-side pathway comparison (linear vs. circular).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Optimisation & Reporting**
 
-## Deploy on Vercel
+   * Multi-Objective Optimisation (MOO) engine.
+   * Users set goals (e.g., minimise cost, minimise carbon, maximise circularity).
+   * Produces Pareto front (optimal trade-offs).
+   * AI-generated recommendations for improvements.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### **Key Performance Indicators (KPIs)** 📊
+
+**Environmental Impact Metrics**
+
+* **Global Warming Potential (GWP):** kg CO₂-eq, critical for decarbonisation.
+* **AP, EP, ODP:** Acidification, Eutrophication, Ozone Depletion – ISO-compliant impact categories.
+
+**Resource Use Metrics**
+
+* **Abiotic Resource Depletion:** Non-renewable resources (fossil fuels, minerals).
+* **Water Scarcity:** Weighted water consumption by regional scarcity.
+
+**Circularity Metrics**
+
+* **Recycled Content & End-of-Life Recycling Rate:** Measures recycled input and recovery after use.
+* **Material Circularity Indicator (MCI):** Composite 0–1 score (linear → circular), factoring:
+
+  * Inputs: virgin vs. recycled material.
+  * Outputs: landfill vs. recycled/reused.
+  * Utility: lifespan & usage intensity.
+
+---
+
+**Bottom Line:**
+The platform enables metals industry stakeholders to **design, compare, and optimise** circular pathways with **AI-driven insights** and **actionable recommendations**, bridging the gaps of traditional LCA.
