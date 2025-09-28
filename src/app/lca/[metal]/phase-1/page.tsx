@@ -1,23 +1,19 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
-import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ArrowLeft, CheckCircle, AlertCircle, Bot } from "lucide-react"
 import type { Phase1Inputs, Metal, RouteType, TransportMode, CompositionPart, TransportLeg, Phase1Results } from "@/lib/types"
-import { estimateMissing, validatePercentSum, calcPhase1 } from "@/lib/calculators"
-import { ResultsPreview } from "@/components/lca"
+import { estimateMissing, validatePercentSum } from "@/lib/calculators"
 
 interface Phase1PageProps {
   params: {
     metal: string
   }
 }
-
 const metalData: Record<string, { name: string; icon: string }> = {
   aluminium: { name: "Aluminium", icon: "Al" },
   aluminum: { name: "Aluminum", icon: "Al" },
@@ -224,7 +220,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
   const isDemo = searchParams.get('demo') === '1'
   
   const [currentStep, setCurrentStep] = useState(1)
-  const [results, setResults] = useState<Phase1Results | null>(null)
   const [showDemoResults, setShowDemoResults] = useState(false)
   const [inputs, setInputs] = useState<Phase1Inputs>(() => {
     if (isDemo) {
@@ -266,22 +261,26 @@ export default function Phase1Page({ params }: Phase1PageProps) {
     }
   }, [currentStep])
 
-  const handleInputChange = (field: string, value: any) => {
+  const handleInputChange = (field: string, value: unknown) => {
     setInputs(prev => {
       const newInputs = { ...prev }
       const keys = field.split('.')
-      let current: any = newInputs
+      let current: unknown = newInputs
       
       for (let i = 0; i < keys.length - 1; i++) {
-        current = current[keys[i]]
+        if (typeof current === 'object' && current !== null) {
+          current = (current as Record<string, unknown>)[keys[i]]
+        }
       }
-      current[keys[keys.length - 1]] = value
+      if (typeof current === 'object' && current !== null) {
+        (current as Record<string, unknown>)[keys[keys.length - 1]] = value as unknown as never
+      }
       
       return newInputs
     })
   }
 
-  const handleCompositionChange = (index: number, field: keyof CompositionPart, value: any) => {
+  const handleCompositionChange = <K extends keyof CompositionPart>(index: number, field: K, value: CompositionPart[K]) => {
     setInputs(prev => ({
       ...prev,
       composition: prev.composition.map((item, i) => 
@@ -317,7 +316,7 @@ export default function Phase1Page({ params }: Phase1PageProps) {
     }))
   }
 
-  const handleTransportChange = (index: number, field: keyof TransportLeg, value: any) => {
+  const handleTransportChange = <K extends keyof TransportLeg>(index: number, field: K, value: TransportLeg[K]) => {
     setInputs(prev => ({
       ...prev,
       route: {
@@ -378,7 +377,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
   const resetAssessment = () => {
     setCurrentStep(1)
     setShowDemoResults(false)
-    setResults(null)
     // Reset inputs to initial state
     setInputs(() => {
       if (isDemo) {
@@ -555,7 +553,10 @@ export default function Phase1Page({ params }: Phase1PageProps) {
               <select
                 id="grid_region"
                 value={inputs.route.energy.grid_region}
-                onChange={(e) => handleInputChange("route.energy.grid_region", e.target.value as any)}
+                onChange={(e) => handleInputChange(
+                  "route.energy.grid_region",
+                  e.target.value as Phase1Inputs['route']['energy']['grid_region']
+                )}
                 className="w-full h-12 px-4 text-base border-2 border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500"
               >
                 <option value="EU">European Union</option>
@@ -872,7 +873,7 @@ export default function Phase1Page({ params }: Phase1PageProps) {
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
                 <span className="text-sm font-semibold text-blue-900">
-                  Demo Mode: Sample data loaded for "Al Cable" project
+                  Demo Mode: Sample data loaded for &quot;Al Cable&quot; project
                 </span>
               </div>
               <p className="text-sm text-blue-700 mt-2">
@@ -959,7 +960,7 @@ export default function Phase1Page({ params }: Phase1PageProps) {
         <div className="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200 shadow-sm">
           <h3 className="text-xl font-semibold text-blue-900 mb-3">Need Help?</h3>
           <p className="text-blue-800 mb-6 leading-relaxed">
-            If you're unsure about any of the information requested, our experts can help you gather the necessary data. 
+            If you&#39;re unsure about any of the information requested, our experts can help you gather the necessary data. 
             We also provide industry benchmarks and best practices to guide your assessment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">

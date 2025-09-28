@@ -15,21 +15,20 @@ export default function NotFound() {
           </div>
 
           {/* Error Message */}
-          <Card className="mb-8">
             <CardHeader>
               <CardTitle className="text-2xl text-slate-900 mb-2">
                 Page Not Found
               </CardTitle>
               <CardDescription className="text-lg">
-                The page you're looking for doesn't exist or has been moved.
+                The page you&#39;re looking for doesn&#39;t exist or has been moved.
               </CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-slate-600 mb-6">
-                Don't worry, it happens to the best of us. Let's get you back on track with your 
+                Don&#39;t worry, it happens to the best of us. Let&#39;s get you back on track with your 
                 Life Cycle Assessment journey.
               </p>
-              
+
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="flex items-center gap-2">

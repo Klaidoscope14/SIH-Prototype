@@ -91,7 +91,7 @@ export default function Phase2Page({ params }: Phase2PageProps) {
             <CardHeader>
               <CardTitle className="text-lg">Upcoming Features</CardTitle>
               <CardDescription>
-                We're working hard to bring you these powerful analytics tools
+                We&apos;re working hard to bring you these powerful analytics tools
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -100,7 +100,10 @@ export default function Phase2Page({ params }: Phase2PageProps) {
                   <div key={index} className="flex items-start gap-4 p-4 rounded-lg border border-gray-200 bg-gray-50">
                     <div className="flex-shrink-0">
                       <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <feature.icon className="w-5 h-5 text-blue-600" />
+                        {(() => {
+                          const Icon = feature.icon
+                          return <Icon className="w-6 h-6 text-blue-600" />
+                        })()}
                       </div>
                     </div>
                     <div className="flex-1">
@@ -169,7 +172,7 @@ export default function Phase2Page({ params }: Phase2PageProps) {
         <div className="mt-8 bg-blue-50 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-blue-900 mb-2">Questions about Phase 2?</h3>
           <p className="text-blue-800 text-sm mb-4">
-            We're excited to share more details about our upcoming analytics features. 
+            We&apos;re excited to share more details about our upcoming analytics features. 
             Contact us to learn more about the development timeline and early access opportunities.
           </p>
           <Link

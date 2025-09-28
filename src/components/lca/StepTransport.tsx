@@ -50,7 +50,11 @@ export default function StepTransport({ inputs, onUpdate }: StepTransportProps) 
     })
   }
 
-  const updateTransportLeg = (index: number, field: keyof TransportLeg, value: any) => {
+  const updateTransportLeg = <K extends keyof TransportLeg>(
+    index: number,
+    field: K,
+    value: TransportLeg[K]
+  ) => {
     const newLegs = transportLegs.map((leg, i) =>
       i === index ? { ...leg, [field]: value } : leg
     )
