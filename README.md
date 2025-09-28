@@ -1,4 +1,4 @@
-# CircuLCA - AI-Driven Life Cycle Assessment Platform
+# Team WatchMen - AI-Driven Life Cycle Assessment Platform
 
 A comprehensive Life Cycle Assessment (LCA) platform designed for sustainable manufacturing, with a focus on metals production and circularity analytics.
 
@@ -355,4 +355,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-**CircuLCA** - Empowering sustainable manufacturing through AI-driven Life Cycle Assessment.
+**Team WatchMen** - Empowering sustainable manufacturing through AI-driven Life Cycle Assessment.
