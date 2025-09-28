@@ -199,13 +199,14 @@ export default function Page() {
         <section className="space-y-3">
           <h1 className="text-pretty text-3xl md:text-4xl font-bold">Visualizing a Circular Future for Metals</h1>
           <p className="text-muted-foreground leading-relaxed max-w-3xl">
-            An AI-powered hackathon project to make circularity analysis fast, intuitive, and actionable. Select a
-            mineral below to see its full life cycle impact.
+            An initiative to make circularity analysis fast, intuitive, and actionable. 
           </p>
         </section>
 
         <section className="space-y-6">
           <h2 className="text-pretty text-2xl font-semibold">Analyze a Mineral&apos;s Life Cycle</h2>
+
+          <h2 className="text-pretty text-2xl font-semibold">Select a mineral from the below.</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {(["aluminum", "copper", "lithium"] as MineralKey[]).map((key) => {
