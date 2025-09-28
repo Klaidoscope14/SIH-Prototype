@@ -15,6 +15,7 @@ export default function NotFound() {
           </div>
 
           {/* Error Message */}
+            <Card>
             <CardHeader>
               <CardTitle className="text-2xl text-slate-900 mb-2">
                 Page Not Found
