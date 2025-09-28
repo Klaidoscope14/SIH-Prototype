@@ -58,7 +58,6 @@ export default function MetalPage({ params }: MetalPageProps) {
   return (
     <div className="min-h-screen bg-slate-50 -mx-4 sm:-mx-6 lg:-mx-8">
       <div className="px-4 sm:px-6 lg:px-8 py-12">
-        {/* Breadcrumb */}
         <nav className="mb-8">
           <ol className="flex items-center space-x-2 text-sm text-slate-500">
             <li><Link href="/lca" className="hover:text-slate-700">LCA</Link></li>
@@ -81,10 +80,8 @@ export default function MetalPage({ params }: MetalPageProps) {
           </p>
         </div>
 
-        {/* Phase Cards */}
         <div className="max-w-4xl mx-auto mb-12">
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Phase 1 Card */}
             <Card className="hover:shadow-lg transition-shadow border-2 border-transparent hover:border-green-500">
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-4">
@@ -131,7 +128,6 @@ export default function MetalPage({ params }: MetalPageProps) {
               </CardContent>
             </Card>
 
-            {/* Phase 2 Card */}
             <Card className="hover:shadow-lg transition-shadow border-2 border-transparent hover:border-orange-500 border-orange-200">
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-4">
@@ -180,7 +176,6 @@ export default function MetalPage({ params }: MetalPageProps) {
           </div>
         </div>
 
-        {/* Back to Metal Selection */}
         <div className="text-center">
           <Button asChild variant="ghost" className="text-slate-600 hover:text-slate-900">
             <Link href="/lca">

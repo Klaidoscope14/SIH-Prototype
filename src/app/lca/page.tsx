@@ -9,7 +9,7 @@ export default function LCAPage() {
       id: "aluminum", 
       name: "Aluminium", 
       description: "Lightweight, corrosion-resistant metal with excellent recyclability",
-      icon: "Al" // We'll use a simple text icon for now
+      icon: "Al" 
     },
     { 
       id: "copper", 
@@ -49,7 +49,6 @@ export default function LCAPage() {
           </p>
         </div>
 
-        {/* Metal Selection Cards */}
         <div className="max-w-4xl mx-auto mb-12">
           <div className="grid md:grid-cols-3 gap-8">
             {metals.map((metal) => (
@@ -73,7 +72,6 @@ export default function LCAPage() {
           </div>
         </div>
 
-        {/* Note about changing metal later */}
         <div className="max-w-4xl mx-auto mb-12">
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
             <div className="flex items-start space-x-3">
@@ -88,7 +86,6 @@ export default function LCAPage() {
           </div>
         </div>
 
-        {/* Help Section */}
         <div className="text-center">
           <div className="inline-flex items-center space-x-2 text-slate-600 mb-4">
             <HelpCircle className="w-5 h-5" />

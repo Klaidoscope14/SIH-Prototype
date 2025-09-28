@@ -86,7 +86,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Method & Scope */}
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Method & Scope</h2>
           

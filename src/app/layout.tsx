@@ -94,7 +94,6 @@ function Navbar() {
             </Button>
           </div>
 
-          {/* Mobile Navigation */}
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
@@ -141,7 +140,6 @@ function Footer() {
     <footer className="border-t bg-muted/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Team WatchMen</h3>
             <p className="text-sm text-muted-foreground">
@@ -149,7 +147,6 @@ function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Quick Links</h4>
             <div className="space-y-2">
@@ -165,7 +162,6 @@ function Footer() {
             </div>
           </div>
 
-          {/* LCA Tools */}
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">LCA Tools</h4>
             <div className="space-y-2">
@@ -181,7 +177,6 @@ function Footer() {
             </div>
           </div>
 
-          {/* Resources */}
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Resources</h4>
             <div className="space-y-2">

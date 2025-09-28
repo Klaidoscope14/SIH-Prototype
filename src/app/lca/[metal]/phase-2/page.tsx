@@ -63,9 +63,7 @@ export default function Phase2Page({ params }: Phase2PageProps) {
           </ol>
         </nav>
 
-        {/* Main Content */}
         <div className="space-y-6">
-          {/* Header Card */}
           <Card className="border-orange-200 bg-orange-50">
             <CardHeader>
               <div className="flex items-center justify-between">
@@ -86,7 +84,6 @@ export default function Phase2Page({ params }: Phase2PageProps) {
             </CardHeader>
           </Card>
 
-          {/* Upcoming Features */}
           <Card>
             <CardHeader>
               <CardTitle className="text-lg">Upcoming Features</CardTitle>
@@ -120,7 +117,6 @@ export default function Phase2Page({ params }: Phase2PageProps) {
             </CardContent>
           </Card>
 
-          {/* Development Status */}
           <Card>
             <CardHeader>
               <CardTitle className="text-lg">Development Status</CardTitle>
@@ -149,7 +145,6 @@ export default function Phase2Page({ params }: Phase2PageProps) {
             </CardContent>
           </Card>
 
-          {/* Call to Action */}
           <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
             <div className="text-center sm:text-left">
               <h3 className="font-semibold text-gray-900 mb-1">
@@ -168,7 +163,6 @@ export default function Phase2Page({ params }: Phase2PageProps) {
           </div>
         </div>
 
-        {/* Help Section */}
         <div className="mt-8 bg-blue-50 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-blue-900 mb-2">Questions about Phase 2?</h3>
           <p className="text-blue-800 text-sm mb-4">

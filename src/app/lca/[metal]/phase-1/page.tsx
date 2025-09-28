@@ -34,7 +34,6 @@ const stepTitles = [
   "Run"
 ]
 
-// Demo results data for prototype showcase
 const demoResultsData = {
   aluminium: { 
     gwp: 890, 
@@ -98,7 +97,6 @@ const demoResultsData = {
   }
 }
 
-// Demo data for sample project
 const getDemoData = (metal: Metal): Phase1Inputs => {
   const baseData = {
     functional_unit_kg: 1000,
@@ -256,7 +254,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
 
   const totalSteps = 6
 
-  // Show demo results when reaching Step 6
   useEffect(() => {
     if (currentStep === 6) {
       setShowDemoResults(true)
@@ -753,7 +750,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
               </Card>
             ) : (
               <div className="space-y-6">
-                {/* Phase-1 Results Section */}
                 <Card>
                   <CardHeader>
                     <CardTitle className="text-2xl font-bold text-slate-900">
@@ -764,7 +760,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    {/* KPI Cards */}
                     <div className="grid gap-4 md:grid-cols-3">
                       <Card className="bg-blue-50 border-blue-200">
                         <CardContent className="p-4">
@@ -800,7 +795,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
                       </Card>
                     </div>
 
-                    {/* Hotspots Table */}
                     <div className="space-y-3">
                       <h4 className="text-lg font-semibold text-slate-800">Impact Hotspots</h4>
                       <div className="space-y-2">
@@ -825,7 +819,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
                   </CardContent>
                 </Card>
 
-                {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button 
                     asChild
@@ -857,7 +850,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 -mx-4 sm:-mx-6 lg:-mx-8">
       <div className="px-4 sm:px-6 lg:px-8 py-8 max-w-5xl mx-auto">
-        {/* Breadcrumb */}
         <nav className="mb-8">
           <ol className="flex items-center space-x-2 text-sm text-slate-600">
             <li><Link href="/lca" className="hover:text-slate-900 transition-colors">LCA</Link></li>
@@ -869,7 +861,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
         </nav>
 
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8">
-          {/* Demo Banner */}
           {isDemo && (
             <div className="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 shadow-sm">
               <div className="flex items-center gap-3">
@@ -884,7 +875,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
             </div>
           )}
 
-          {/* Progress Bar */}
           <div className="mb-8">
             <div className="flex justify-between items-center mb-3">
               <span className="text-base font-semibold text-slate-800">
@@ -902,7 +892,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
             </div>
           </div>
 
-          {/* AI Fill Button */}
           {currentStep < 5 && (
             <div className="mb-8">
               <Button 
@@ -916,12 +905,9 @@ export default function Phase1Page({ params }: Phase1PageProps) {
             </div>
           )}
 
-          {/* Step Content */}
           <div className="mb-8">
             {renderStep()}
           </div>
-
-          {/* Navigation Buttons */}
           <div className="flex justify-between items-center pt-6 border-t border-slate-200">
             <Button
               onClick={prevStep}
@@ -958,7 +944,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
           </div>
         </div>
 
-        {/* Help Section */}
         <div className="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200 shadow-sm">
           <h3 className="text-xl font-semibold text-blue-900 mb-3">Need Help?</h3>
           <p className="text-blue-800 mb-6 leading-relaxed">
