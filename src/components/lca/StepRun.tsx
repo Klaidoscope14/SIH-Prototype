@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent} from "@/components/ui/card"
 import { CheckCircle, Loader2, AlertCircle, BarChart3 } from "lucide-react"
 import type { Phase1Inputs, Phase1Results } from "@/lib/types"
 import { calcPhase1 } from "@/lib/calculators"

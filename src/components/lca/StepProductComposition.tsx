@@ -33,7 +33,7 @@ export default function StepProductComposition({ inputs, onUpdate, metal }: Step
     onUpdate({ functional_unit_kg: value })
   }
 
-  const handleCompositionChange = (index: number, field: keyof CompositionPart, value: any) => {
+  const handleCompositionChange = <K extends keyof CompositionPart>(index: number, field: K, value: CompositionPart[K]) => {
     const newComposition = composition.map((item, i) => 
       i === index ? { ...item, [field]: value } : item
     )

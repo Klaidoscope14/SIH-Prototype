@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ArrowLeft, CheckCircle, AlertCircle, Bot } from "lucide-react"
-import type { Phase1Inputs, Metal, RouteType, TransportMode, CompositionPart, TransportLeg, Phase1Results } from "@/lib/types"
+import type { Phase1Inputs, Metal, RouteType, TransportMode, CompositionPart, TransportLeg } from "@/lib/types"
 import { estimateMissing, validatePercentSum } from "@/lib/calculators"
 
 interface Phase1PageProps {
