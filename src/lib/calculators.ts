@@ -16,23 +16,45 @@ const PROCESS_ENERGY_FACTORS = {
 } as const
 
 // Water consumption factors (m³ per tonne) by metal and route
-const WATER_FACTORS: Record<Metal, Record<RouteType, number>> = {
+export const WATER_FACTORS = {
   aluminium: {
     primary: 12,   // High water usage for smelting
     secondary: 2,  // Low water usage for recycling
-    hybrid: 7      // Mixed water usage
+    hybrid: 7
   },
+
+  // Mirror 'aluminium' for US spelling if your Metal type includes both
+  aluminum: {
+    primary: 12,
+    secondary: 2,
+    hybrid: 7
+  },
+
   copper: {
-    primary: 8,    // Moderate water usage
-    secondary: 1,  // Very low water usage
-    hybrid: 4      // Mixed water usage
+    primary: 8,
+    secondary: 3,
+    hybrid: 5
   },
+
   steel: {
-    primary: 6,    // Moderate water usage
-    secondary: 1,  // Low water usage
-    hybrid: 3      // Mixed water usage
+    primary: 5,
+    secondary: 1,
+    hybrid: 3
+  },
+
+  // New metals required by your Metal union.
+  // Start with placeholders (0) if you don't have vetted factors yet.
+  calcium: {
+    primary: 0,
+    secondary: 0,
+    hybrid: 0
+  },
+  lithium: {
+    primary: 0,
+    secondary: 0,
+    hybrid: 0
   }
-}
+} satisfies Record<Metal, Record<RouteType, number>>;
 
 /**
  * Validates that percentage values sum to 100%
