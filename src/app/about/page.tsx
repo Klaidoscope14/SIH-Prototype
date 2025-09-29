@@ -7,7 +7,7 @@ export default function AboutPage() {
             About Team WatchMen
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We're dedicated to helping manufacturers create more sustainable products 
+            We&apos;re dedicated to helping manufacturers create more sustainable products 
             through comprehensive Life Cycle Assessment tools and methodologies.
           </p>
         </div>
@@ -21,7 +21,7 @@ export default function AboutPage() {
               their environmental impact.
             </p>
             <p className="text-lg text-gray-600">
-              We believe that sustainable manufacturing isn't just good for the planet—it's 
+              We believe that sustainable manufacturing isn&apos;t just good for the planet—it&apos;s 
               good for business, driving innovation, reducing costs, and building 
               competitive advantage.
             </p>
@@ -80,13 +80,12 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Actionable Insights</h3>
               <p className="text-gray-600">
-                We don't just measure impact—we provide clear recommendations for improvement
+                We don&apos;t just measure impact—we provide clear recommendations for improvement
               </p>
             </div>
           </div>
         </div>
 
-        {/* Method & Scope */}
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Method & Scope</h2>
           
@@ -150,7 +149,7 @@ export default function AboutPage() {
           <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto">
             Team WatchMen is built by a team of environmental scientists, software engineers, 
             and sustainability experts with decades of combined experience in Life Cycle 
-            Assessment and sustainable manufacturing. We're passionate about using 
+            Assessment and sustainable manufacturing. We&apos;re passionate about using 
             technology to solve environmental challenges and help businesses thrive 
             sustainably.
           </p>

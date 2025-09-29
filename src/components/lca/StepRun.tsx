@@ -1,13 +1,11 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Card, CardContent} from "@/components/ui/card"
 import { CheckCircle, Loader2, AlertCircle, BarChart3 } from "lucide-react"
 import type { Phase1Inputs, Phase1Results } from "@/lib/types"
 import { calcPhase1 } from "@/lib/calculators"
-import { formatCO2e, formatEnergy, formatVolume, formatNumber } from "@/lib/format"
 import ResultsPreview from "./ResultsPreview"
 
 interface StepRunProps {
@@ -20,7 +18,7 @@ export default function StepRun({ inputs, onResults }: StepRunProps) {
   const [results, setResults] = useState<Phase1Results | null>(null)
   const [error, setError] = useState<string | null>(null)
 
-  const runAssessment = async () => {
+  const runAssessment = useCallback(async () => {
     setIsRunning(true)
     setError(null)
     
@@ -36,12 +34,12 @@ export default function StepRun({ inputs, onResults }: StepRunProps) {
     } finally {
       setIsRunning(false)
     }
-  }
+  }, [inputs, onResults])
 
   // Auto-run on mount
   useEffect(() => {
     runAssessment()
-  }, [])
+  }, [runAssessment])
 
   if (isRunning) {
     return (

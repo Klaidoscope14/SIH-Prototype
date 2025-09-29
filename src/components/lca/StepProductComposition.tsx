@@ -18,8 +18,11 @@ interface StepProductCompositionProps {
 
 const metalData: Record<Metal, { name: string; icon: string }> = {
   aluminium: { name: "Aluminium", icon: "Al" },
+  aluminum: { name: "Aluminum", icon: "Al" },
   copper: { name: "Copper", icon: "Cu" },
-  steel: { name: "Steel", icon: "Fe" }
+  steel: { name: "Steel", icon: "Fe" },
+  calcium: { name: "Calcium", icon: "Ca" },
+  lithium: { name: "Lithium", icon: "Li" }
 }
 
 export default function StepProductComposition({ inputs, onUpdate, metal }: StepProductCompositionProps) {
@@ -33,7 +36,7 @@ export default function StepProductComposition({ inputs, onUpdate, metal }: Step
     onUpdate({ functional_unit_kg: value })
   }
 
-  const handleCompositionChange = (index: number, field: keyof CompositionPart, value: any) => {
+  const handleCompositionChange = <K extends keyof CompositionPart>(index: number, field: K, value: CompositionPart[K]) => {
     const newComposition = composition.map((item, i) => 
       i === index ? { ...item, [field]: value } : item
     )

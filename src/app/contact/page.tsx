@@ -27,14 +27,8 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-
-    // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000))
-
-    // Show success toast
     showToast("Thanks! We'll get back soon.", "success")
-    
-    // Reset form
     setFormData({
       name: "",
       email: "",
@@ -57,13 +51,12 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
+        <div className="grid lg:grid-cols-2 gap-12">  
           <Card>
             <CardHeader>
               <CardTitle>Send us a message</CardTitle>
               <CardDescription>
-                We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+                We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -119,7 +112,6 @@ export default function ContactPage() {
             </CardContent>
           </Card>
 
-          {/* Contact Information */}
           <div className="space-y-8">
             <div className="bg-white rounded-lg shadow-lg p-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-6">Get in Touch</h2>

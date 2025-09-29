@@ -16,7 +16,6 @@ import {
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
       <section className="py-24 -mx-4 sm:-mx-6 lg:-mx-8 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
@@ -39,7 +38,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Value Props Section */}
       <section className="py-20 -mx-4 sm:-mx-6 lg:-mx-8 bg-slate-50">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -111,7 +109,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How it Works Section */}
       <section className="py-20 -mx-4 sm:-mx-6 lg:-mx-8 bg-white">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -157,7 +154,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Visualization Section */}
       <section className="py-20 -mx-4 sm:-mx-6 lg:-mx-8 bg-slate-50">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -213,7 +209,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer CTA Section */}
       <section className="py-20 -mx-4 sm:-mx-6 lg:-mx-8 bg-slate-900">
         <div className="px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">

@@ -10,29 +10,26 @@ export default function NotFound() {
     <div className="min-h-screen bg-slate-50 -mx-4 sm:-mx-6 lg:-mx-8">
       <div className="px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-2xl mx-auto text-center">
-          {/* 404 Illustration */}
           <div className="mb-8">
             <div className="text-9xl font-bold text-slate-200 mb-4">404</div>
             <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
           </div>
 
-          {/* Error Message */}
-          <Card className="mb-8">
+            <Card>
             <CardHeader>
               <CardTitle className="text-2xl text-slate-900 mb-2">
                 Page Not Found
               </CardTitle>
               <CardDescription className="text-lg">
-                The page you're looking for doesn't exist or has been moved.
+                The page you&#39;re looking for doesn&#39;t exist or has been moved.
               </CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-slate-600 mb-6">
-                Don't worry, it happens to the best of us. Let's get you back on track with your 
+                Don&#39;t worry, it happens to the best of us. Let&#39;s get you back on track with your 
                 Life Cycle Assessment journey.
               </p>
-              
-              {/* Action Buttons */}
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="flex items-center gap-2">
                   <Link href="/">
@@ -50,7 +47,6 @@ export default function NotFound() {
             </CardContent>
           </Card>
 
-          {/* Helpful Links */}
           <div className="grid md:grid-cols-3 gap-4 text-left">
             <Card className="hover:shadow-md transition-shadow">
               <CardContent className="p-6">
@@ -89,7 +85,6 @@ export default function NotFound() {
             </Card>
           </div>
 
-          {/* Back Button */}
           <div className="mt-8">
             <Button 
               variant="ghost" 

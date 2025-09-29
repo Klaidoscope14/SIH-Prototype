@@ -1,23 +1,21 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
 import { useSearchParams } from "next/navigation"
+import Link from "next/link"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ArrowLeft, CheckCircle, AlertCircle, Bot } from "lucide-react"
-import type { Phase1Inputs, Metal, RouteType, TransportMode, CompositionPart, TransportLeg, Phase1Results } from "@/lib/types"
-import { estimateMissing, validatePercentSum, calcPhase1 } from "@/lib/calculators"
-import { ResultsPreview } from "@/components/lca"
+import type { Phase1Inputs, Metal, RouteType, TransportMode, CompositionPart, TransportLeg } from "@/lib/types"
+import { estimateMissing, validatePercentSum } from "@/lib/calculators"
 
 interface Phase1PageProps {
   params: {
     metal: string
   }
 }
-
 const metalData: Record<string, { name: string; icon: string }> = {
   aluminium: { name: "Aluminium", icon: "Al" },
   aluminum: { name: "Aluminum", icon: "Al" },
@@ -36,7 +34,6 @@ const stepTitles = [
   "Run"
 ]
 
-// Demo results data for prototype showcase
 const demoResultsData = {
   aluminium: { 
     gwp: 890, 
@@ -100,7 +97,6 @@ const demoResultsData = {
   }
 }
 
-// Demo data for sample project
 const getDemoData = (metal: Metal): Phase1Inputs => {
   const baseData = {
     functional_unit_kg: 1000,
@@ -224,7 +220,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
   const isDemo = searchParams.get('demo') === '1'
   
   const [currentStep, setCurrentStep] = useState(1)
-  const [results, setResults] = useState<Phase1Results | null>(null)
   const [showDemoResults, setShowDemoResults] = useState(false)
   const [inputs, setInputs] = useState<Phase1Inputs>(() => {
     if (isDemo) {
@@ -259,29 +254,32 @@ export default function Phase1Page({ params }: Phase1PageProps) {
 
   const totalSteps = 6
 
-  // Show demo results when reaching Step 6
   useEffect(() => {
     if (currentStep === 6) {
       setShowDemoResults(true)
     }
   }, [currentStep])
 
-  const handleInputChange = (field: string, value: any) => {
+  const handleInputChange = (field: string, value: unknown) => {
     setInputs(prev => {
       const newInputs = { ...prev }
       const keys = field.split('.')
-      let current: any = newInputs
+      let current: unknown = newInputs
       
       for (let i = 0; i < keys.length - 1; i++) {
-        current = current[keys[i]]
+        if (typeof current === 'object' && current !== null) {
+          current = (current as Record<string, unknown>)[keys[i]]
+        }
       }
-      current[keys[keys.length - 1]] = value
+      if (typeof current === 'object' && current !== null) {
+        (current as Record<string, unknown>)[keys[keys.length - 1]] = value as unknown as never
+      }
       
       return newInputs
     })
   }
 
-  const handleCompositionChange = (index: number, field: keyof CompositionPart, value: any) => {
+  const handleCompositionChange = <K extends keyof CompositionPart>(index: number, field: K, value: CompositionPart[K]) => {
     setInputs(prev => ({
       ...prev,
       composition: prev.composition.map((item, i) => 
@@ -317,7 +315,7 @@ export default function Phase1Page({ params }: Phase1PageProps) {
     }))
   }
 
-  const handleTransportChange = (index: number, field: keyof TransportLeg, value: any) => {
+  const handleTransportChange = <K extends keyof TransportLeg>(index: number, field: K, value: TransportLeg[K]) => {
     setInputs(prev => ({
       ...prev,
       route: {
@@ -378,7 +376,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
   const resetAssessment = () => {
     setCurrentStep(1)
     setShowDemoResults(false)
-    setResults(null)
     // Reset inputs to initial state
     setInputs(() => {
       if (isDemo) {
@@ -555,7 +552,10 @@ export default function Phase1Page({ params }: Phase1PageProps) {
               <select
                 id="grid_region"
                 value={inputs.route.energy.grid_region}
-                onChange={(e) => handleInputChange("route.energy.grid_region", e.target.value as any)}
+                onChange={(e) => handleInputChange(
+                  "route.energy.grid_region",
+                  e.target.value as Phase1Inputs['route']['energy']['grid_region']
+                )}
                 className="w-full h-12 px-4 text-base border-2 border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500"
               >
                 <option value="EU">European Union</option>
@@ -750,7 +750,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
               </Card>
             ) : (
               <div className="space-y-6">
-                {/* Phase-1 Results Section */}
                 <Card>
                   <CardHeader>
                     <CardTitle className="text-2xl font-bold text-slate-900">
@@ -761,7 +760,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    {/* KPI Cards */}
                     <div className="grid gap-4 md:grid-cols-3">
                       <Card className="bg-blue-50 border-blue-200">
                         <CardContent className="p-4">
@@ -797,7 +795,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
                       </Card>
                     </div>
 
-                    {/* Hotspots Table */}
                     <div className="space-y-3">
                       <h4 className="text-lg font-semibold text-slate-800">Impact Hotspots</h4>
                       <div className="space-y-2">
@@ -822,7 +819,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
                   </CardContent>
                 </Card>
 
-                {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button 
                     asChild
@@ -854,7 +850,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 -mx-4 sm:-mx-6 lg:-mx-8">
       <div className="px-4 sm:px-6 lg:px-8 py-8 max-w-5xl mx-auto">
-        {/* Breadcrumb */}
         <nav className="mb-8">
           <ol className="flex items-center space-x-2 text-sm text-slate-600">
             <li><Link href="/lca" className="hover:text-slate-900 transition-colors">LCA</Link></li>
@@ -866,13 +861,12 @@ export default function Phase1Page({ params }: Phase1PageProps) {
         </nav>
 
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8">
-          {/* Demo Banner */}
           {isDemo && (
             <div className="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 shadow-sm">
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
                 <span className="text-sm font-semibold text-blue-900">
-                  Demo Mode: Sample data loaded for "Al Cable" project
+                  Demo Mode: Sample data loaded for &quot;Al Cable&quot; project
                 </span>
               </div>
               <p className="text-sm text-blue-700 mt-2">
@@ -881,7 +875,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
             </div>
           )}
 
-          {/* Progress Bar */}
           <div className="mb-8">
             <div className="flex justify-between items-center mb-3">
               <span className="text-base font-semibold text-slate-800">
@@ -899,7 +892,6 @@ export default function Phase1Page({ params }: Phase1PageProps) {
             </div>
           </div>
 
-          {/* AI Fill Button */}
           {currentStep < 5 && (
             <div className="mb-8">
               <Button 
@@ -913,12 +905,9 @@ export default function Phase1Page({ params }: Phase1PageProps) {
             </div>
           )}
 
-          {/* Step Content */}
           <div className="mb-8">
             {renderStep()}
           </div>
-
-          {/* Navigation Buttons */}
           <div className="flex justify-between items-center pt-6 border-t border-slate-200">
             <Button
               onClick={prevStep}
@@ -955,11 +944,10 @@ export default function Phase1Page({ params }: Phase1PageProps) {
           </div>
         </div>
 
-        {/* Help Section */}
         <div className="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200 shadow-sm">
           <h3 className="text-xl font-semibold text-blue-900 mb-3">Need Help?</h3>
           <p className="text-blue-800 mb-6 leading-relaxed">
-            If you're unsure about any of the information requested, our experts can help you gather the necessary data. 
+            If you&#39;re unsure about any of the information requested, our experts can help you gather the necessary data. 
             We also provide industry benchmarks and best practices to guide your assessment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">

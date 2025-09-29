@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Bot, RotateCcw, CheckCircle, AlertCircle } from "lucide-react"
 import type { Phase1Inputs, Metal } from "@/lib/types"
@@ -16,8 +16,11 @@ interface StepReviewProps {
 
 const metalData: Record<Metal, { name: string; icon: string }> = {
   aluminium: { name: "Aluminium", icon: "Al" },
+  aluminum: { name: "Aluminum", icon: "Al" }, // US spelling
   copper: { name: "Copper", icon: "Cu" },
-  steel: { name: "Steel", icon: "Fe" }
+  steel: { name: "Steel", icon: "Fe" },
+  calcium: { name: "Calcium", icon: "Ca" },
+  lithium: { name: "Lithium", icon: "Li" }
 }
 
 const gridRegionLabels: Record<string, string> = {

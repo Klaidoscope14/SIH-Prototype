@@ -16,10 +16,8 @@ export default function ServicesPage() {
           </p>
         </div>
 
-        {/* Services List */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="grid md:grid-cols-2 gap-8">
-            {/* LCA Service */}
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-4">
@@ -58,7 +56,6 @@ export default function ServicesPage() {
               </CardContent>
             </Card>
 
-            {/* Circularity Analytics Service */}
             <Card className="hover:shadow-lg transition-shadow border-orange-200">
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-4">
@@ -104,7 +101,6 @@ export default function ServicesPage() {
           </div>
         </div>
 
-        {/* Launch LCA CTA */}
         <div className="text-center">
           <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-12 text-white">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
