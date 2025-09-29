@@ -5,6 +5,7 @@ import "./globals.css"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ToastProvider } from "@/components/ui/toast"
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: {
@@ -48,6 +49,7 @@ export default function RootLayout({
           <main className="min-h-screen">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               {children}
+              <Analytics/>
             </div>
           </main>
         </ToastProvider>
